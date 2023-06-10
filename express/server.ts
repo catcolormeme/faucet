@@ -194,6 +194,8 @@ app.get('/ip', (req: any, res: any) => {
     })
 })
 
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+
 app.get('*', async (req: any, res: any) => {
     res.sendFile(path.join(__dirname, "build/client", "index.html").replace('/express',''))
 })
