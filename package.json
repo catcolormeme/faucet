@@ -5,8 +5,8 @@
   "main": "functions/server.js",
   "scripts": {
     "postinstall": "npm install --prefix client",
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
-    "build": "netlify deploy --prod",
+    "build": "npx tsc && npm run build --prefix client",
+    "start": "node build/server.js",
     "dev": "npx --yes concurrently \"npx --yes nodemon server.ts\"",
     "start_prod": "pm2 start npm --name \"faucet\" -- run start"
   },
@@ -19,7 +19,6 @@
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
     "express-rate-limit": "^6.4.0",
-    "netlify-lambda": "^2.0.16",
     "range_check": "^2.0.4",
     "serverless-http": "^3.2.0",
     "totp-generator": "^0.0.13",
