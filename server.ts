@@ -1,5 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import serverless from 'serverless-http';
 import cors from 'cors'
 import path from 'path'
 import dotenv from 'dotenv'
@@ -165,6 +166,9 @@ app.get('*', async (req: any, res: any) => {
     res.sendFile(path.join(__dirname, "client", "index.html"))
 })
 
-app.listen(process.env.PORT || 8000, () => {
-    console.log(`Server started at port ${process.env.PORT || 8000}`)
-})
+// app.listen(process.env.PORT || 8000, () => {
+//     console.log(`Server started at port ${process.env.PORT || 8000}`)
+// })
+
+module.exports = app;
+module.exports.handler = serverless(app);
