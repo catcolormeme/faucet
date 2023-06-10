@@ -2,12 +2,12 @@
   "name": "faucet",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "functions/server.js",
   "scripts": {
     "postinstall": "npm install --prefix client",
     "build": "npx tsc && npm run build --prefix client",
     "start": "node build/server.js",
-    "dev": "npx --yes concurrently \"npx --yes nodemon server.ts\" \"npm run dev --prefix client\"",
+    "dev": "npx --yes concurrently \"npx --yes nodemon server.ts\"",
     "start_prod": "pm2 start npm --name \"faucet\" -- run start"
   },
   "keywords": [],
